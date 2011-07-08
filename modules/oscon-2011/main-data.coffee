@@ -4,9 +4,9 @@ ical = require "ical"
 
 #----------------------------------------------------------------------
 exports.main = () ->
-    processCalendar("oscon", "oscon.ics")
-    processCalendar("data",  "data.ics")
-    processCalendar("java",  "java.ics")
+    processCalendar("oscon", "http://oscon-2011.muellerware.org/data/oscon.ics")
+    processCalendar("data",  "http://oscon-2011.muellerware.org/data/data.ics")
+    processCalendar("java",  "http://oscon-2011.muellerware.org/data/java.ics")
 
 #----------------------------------------------------------------------
 xhrError = (jqXHR, textStatus, errorThrown) ->
