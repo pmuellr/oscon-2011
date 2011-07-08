@@ -22,6 +22,7 @@ build:
 	@mkdir -p deploy/css
 	@mkdir -p deploy/data
 	@mkdir -p deploy/vendor
+	@mkdir -p deploy/images
 	
 	@echo 
 	@echo ===========================================================
@@ -30,6 +31,7 @@ build:
 	cp index-nm.html          deploy
 	cp css/*                  deploy/css
 	cp data/*                 deploy/data
+	cp images/*               deploy/images
 	cp vendor/jquery/*.js     deploy/vendor
 	cp vendor/modjewel/*.js   deploy/vendor
 	cp vendor/json2/*.js      deploy/vendor
@@ -40,7 +42,7 @@ build:
 	@echo ===========================================================
 	@rm -rf tmp
 	@mkdir tmp
-	coffee -o tmp/ -c modules/
+	coffee --bare --output tmp/ --compile modules/
 	python vendor/modjewel/module2amd.py --out deploy/modules tmp
 	
 	@echo 
@@ -63,18 +65,20 @@ build:
 	cd deploy; \
 	    find  . -type f -print | \
 	    sed s/^\.\.// | \
-	     grep -v "\.htaccess" | \
-	     grep -v "data/" | \
-	     grep -v "index.*html" \
-	     > ../tmp/index.manifest.files
+        grep -v "\.htaccess" | \
+	    grep -v "data/" | \
+	    grep -v "index-nm.html" \
+	    > ../tmp/index.manifest.files
+	    
 	echo "CACHE MANIFEST"         > deploy/index.manifest
 	echo "# `date`"              >> deploy/index.manifest
 	echo                         >> deploy/index.manifest
 	cat tmp/index.manifest.files >> deploy/index.manifest
-	echo "http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif" >> deploy/index.manifest
 	echo                         >> deploy/index.manifest
 	echo "NETWORK:"              >> deploy/index.manifest
-	echo "*"                     >> deploy/index.manifest
+	echo "http://oscon-2011.muellerware.org/data/oscon.ics" >> deploy/index.manifest
+	echo "http://oscon-2011.muellerware.org/data/data.ics" >> deploy/index.manifest
+	echo "http://oscon-2011.muellerware.org/data/java.ics" >> deploy/index.manifest
 
 	@echo 
 	@echo ===========================================================
@@ -221,7 +225,7 @@ UNDERSCORE_URL         = https://raw.github.com/documentcloud/underscore
 UNDERSCORE_VERSION     = 1.1.6
 
 BACKBONE_URL           = https://raw.github.com/documentcloud/backbone
-BACKBONE_VERSION       = 0.5.0
+BACKBONE_VERSION       = 0.5.1
 
 QUNIT_URL              = https://raw.github.com/jquery/qunit
 QUNIT_VERSION          = master

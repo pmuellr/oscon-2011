@@ -12,11 +12,11 @@ http://www.opensource.org/licenses/mit-license.php
 
 <!-- debug -->
 
-<link rel="shortcut icon"                                href="http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif" />
-<link rel="apple-touch-icon-precomposed"                 href="http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif"/>
-<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif"/>
-<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif"/>
-<link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://assets.en.oreilly.com/1/event/61/oscon2011_attending_150x150.gif"/>
+<link rel="shortcut icon"                                href="images/oscon2011_attending_150x150.gif" />
+<link rel="apple-touch-icon-precomposed"                 href="images/oscon2011_attending_150x150.gif" />
+<link rel="apple-touch-icon-precomposed" sizes="57x57"   href="images/oscon2011_attending_150x150.gif" />
+<link rel="apple-touch-icon-precomposed" sizes="72x72"   href="images/oscon2011_attending_150x150.gif" />
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="images/oscon2011_attending_150x150.gif" />
 
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
@@ -30,9 +30,13 @@ http://www.opensource.org/licenses/mit-license.php
 
 <!-- ======================================================================= -->
 <script src="modules/oscon-2011/main.amd.js"></script>
+<script src="modules/oscon-2011/appcache.amd.js"></script>
+<script src="modules/oscon-2011/calendar.amd.js"></script>
 <script src="modules/request.amd.js"></script>
 <script src="modules/fs.amd.js"></script>
 <script src="vendor/ical.amd.js"></script>
+<script src="vendor/backbone.amd.js"></script>
+<script src="vendor/underscore.amd.js"></script>
 
 <!-- ======================================================================= -->
 <script>
@@ -43,7 +47,10 @@ require("oscon-2011/main").main()
 <body>
 <!-- ======================================================================= -->
 
-go away
+<p>16:58
+
+<div id="header"></div>
+<div id="entries"></div>
 
 <!-- ======================================================================= -->
 </body>
