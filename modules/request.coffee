@@ -1,0 +1,1 @@
+# stub for ical's require('request')
