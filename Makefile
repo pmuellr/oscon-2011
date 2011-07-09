@@ -65,8 +65,8 @@ build:
 	cd deploy; \
 	    find  . -type f -print | \
 	    sed s/^\.\.// | \
+        grep -v "data\/" | \
         grep -v "\.htaccess" | \
-	    grep -v "data/" | \
 	    grep -v "index-nm.html" \
 	    > ../tmp/index.manifest.files
 	    
@@ -76,9 +76,7 @@ build:
 	cat tmp/index.manifest.files >> deploy/index.manifest
 	echo                         >> deploy/index.manifest
 	echo "NETWORK:"              >> deploy/index.manifest
-	echo "http://oscon-2011.muellerware.org/data/oscon.ics" >> deploy/index.manifest
-	echo "http://oscon-2011.muellerware.org/data/data.ics" >> deploy/index.manifest
-	echo "http://oscon-2011.muellerware.org/data/java.ics" >> deploy/index.manifest
+	echo "*" >> deploy/index.manifest
 
 	@echo 
 	@echo ===========================================================

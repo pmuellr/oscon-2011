@@ -5,25 +5,25 @@ appcache = require "./appcache"
 calendar = require "./calendar"
 
 calendars = 
-    oscon: "http://oscon-2011.muellerware.org/data/oscon.ics"
-    data:  "http://oscon-2011.muellerware.org/data/data.ics"
-    java:  "http://oscon-2011.muellerware.org/data/java.ics"
+    oscon: "data/oscon.ics"
+    data:  "data/data.ics"
+    java:  "data/java.ics"
 
 #----------------------------------------------------------------------
 entryToHtml = (entry) ->
     date = "#{ entry.dateS.day } #{ entry.dateS.time }"
     cal  = entry.calendarName
     html = """ 
-        <div class='entry'>
-           <div class='title'       >#{ entry.summary }</div>
-           <div>
-               <span class='date'>#{ date } for #{ entry.length }</span>
-               <span class='location'>#{ entry.location }</span>
-               <span class='calendar cal-#{ cal }'>#{ cal }</span>
-           </div>
-           <div class='description' >#{ entry.description }</div>
-        </div>
+        <tr id='#{ entry.uid }' class='event day-#{ entry.day }'>
+            <td valign='top' class='fav-button'>&#x2606;
+            <td valign='top' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
+            <td valign='top'>#{ entry.summary }
+        <tr id='#{ entry.uid }-desc' class='description'>
+            <td>&nbsp;
+            <td colspan='2'><div class='content'>#{ entry.description }</div>
     """
+
+   #            <span class='calendar cal-#{ cal }'>#{ cal }</span>
 
 #----------------------------------------------------------------------
 entriesUpdated = (entries) ->
@@ -38,12 +38,46 @@ entriesUpdated = (entries) ->
         return  1 if a.summary > b.summary
         return 0
         
-    html = ""
+
+    i        = 0
+    lastDate = ""
+    html     = []
     
-    html += entryToHtml entry for entry in entries
+    while i < entries.length
+        entry = entries[i]
+        if entry.dateS.day != lastDate
+            lastDate = entry.dateS.day
+            tr = "<tr><td class='day-divider' colspan='3'>#{entry.dateS.day}, #{entry.dateS.month} #{entry.dateS.date}"
+            html.push tr
+            
+        html.push(entryToHtml entry)
+        
+        i += 1
+            
+        
+    html = "<table width='100%'>#{html.join '\n'}</table>"
     
-    $(document).ready ()->
-        $("#entries").html(html)
+    $("#entries").html(html)
+    
+    setupDescriptions()
+
+#----------------------------------------------------------------------
+setupDescriptions = () ->
+
+    $(".event").bind("click", () ->
+        descriptionId = this.id + "-desc"
+        display = $("##{descriptionId}").css("display")
+        if display == "none"
+            display = "table-row"
+        else
+            display = "none"
+            
+        $("##{descriptionId}").css("display", display)
+    )
+
+    $(".description").bind("click", () ->
+        $(this).css("display", "none")
+    )
 
 #----------------------------------------------------------------------
 exports.main = () ->
@@ -55,6 +89,10 @@ exports.main = () ->
     calendar.events.bind("update", entriesUpdated)
     
     calendar.getEntries()
+    
+    $("#clear-button").bind("click", () ->
+        calendar.updateEntries()
+    )
     
     # just for testing
     # calendar.updateEntries()

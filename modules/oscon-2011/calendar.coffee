@@ -85,7 +85,7 @@ entryEnhanceDate = (entry, date, key) ->
         hr -= 12
     
     entry.time = right2(hr,  " ") + ":" + 
-                 right2(min, "0") + " " + 
+                 right2(min, "0") + 
                  ampm
 
 #----------------------------------------------------------------------
@@ -101,6 +101,8 @@ entryEnhance = (entry, calendarName) ->
     minutes -= hours * 60
     
     entry.length = hours + ":" + right2(minutes,"0")
+    
+    entry.uid = entry.uid.replace(/\:|\/|\.|\-/g, "_")
     
     delete entry.type
     delete entry.params

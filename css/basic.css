@@ -1,38 +1,105 @@
-#entries .entry .title {
-    font-weight:   bold;
+.day-divider {
+    background-color:       #000000;
+    color:                  #FFFFFF;
+    font-weight:            bold;
+    font-size:              120%;
 }
 
-#entries .entry .date {
-    margin-left:   1.0em;
+.description {
+    display:                none;
 }
 
-#entries .entry .location {
-    margin-left:   1.0em;
-    font-style:    italic;
-}
-
-#entries .entry .description {
-    margin-top:    0.5em;
-    margin-left:   1.0em;
-    margin-bottom: 1.0em;
-}
-
-#entries .entry .calendar {
-    padding-left:  0.3em;
-    padding-right: 0.3em;
+.description .content{
+    background:             #EEEEEE;
+    padding-left:           0.3em;
+    padding-right:          0.3em;
+    border-left:            thin solid black;
+    border-bottom:          thin solid black;
+    border-right:           thin solid black;
 }
 
 .cal-oscon {
-    background-color: #9A000B;
-    color:            #FFFFFF;
+    background-color:       #9A000B;
+    color:                  #FFFFFF;
 }
 
 .cal-data {
-    background-color: #C70933;
-    color:            #FFFFFF;
+    background-color:       #C70933;
+    color:                  #FFFFFF;
 }
 
 .cal-java {
-    background-color: #501375;
-    color:            #FFFFFF;
+    background-color:       #501375;
+    color:                  #FFFFFF;
+}
+
+
+@media screen and (max-width: 320px) {
+    body {
+        font-size:          100%;
+    }
+}
+
+@media screen and (min-width: 321px) {
+    body {
+        font-size:          150%;
+    }
+}
+
+body {
+    font-family:            Verdana;
+    margin:                 0;
+    padding:                0.0em 0.2em;
+}
+
+.menu {
+    white-space:            nowrap;
+    padding:                0.7em 0.0em 0.7em 0.0em;
+    margin:                 0.0em 0.0em 0.0em 0.0em;
+    overflow:               hidden;
+}
+
+.menu .button, .menu .toggle {
+    font-size:              100%;
+    padding:                0.4em 0.4em 0.4em 0.4em;
+    margin:                 0.0em 0.0em 0.0em 0.0em;
+    font-weight:            bold;
+    -webkit-border-radius:  10px;
+    -moz-border-radius:     10px;
+}
+
+.menu .toggle {
+    border:                 thin solid;
+}
+
+.menu .toggle.on {
+    background-color:       #777;
+    color:                  #FFF;
+}
+
+.menu .button {
+    background-color:       #BBB;
+    color:                  #FFF;
+}
+
+.fav-button {
+    color:                  #000;
+}
+
+.fav .fav-button {
+    color:                  #090;
+}
+
+h1 {
+    font-size:              100%;
+    background-color:       #ff7;
+    margin:                 0.0em 0.0em;
+    padding:                0.2em 0.4em;
+}
+
+#crap {
+    background-color:       #CCF;
+    -webkit-border-radius:  10px;
+    padding:                0.1em 0.1em;
+    margin:                 0.2em 0;
 }
