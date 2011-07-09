@@ -1,8 +1,9 @@
 #----------------------------------------------------------------------
 _        = require "underscore"
 
-appcache = require "./appcache"
-calendar = require "./calendar"
+appcache  = require "./appcache"
+calendar  = require "./calendar"
+favorites = require "./favorites"
 
 calendars = 
     oscon: "data/oscon.ics"
@@ -16,8 +17,8 @@ entryToHtml = (entry) ->
     html = """ 
         <tr id='#{ entry.uid }' class='event day-#{ entry.day }'>
             <td valign='top' class='fav-button'>&#x2606;
-            <td valign='top' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
-            <td valign='top'>#{ entry.summary }
+            <td valign='top' class='time' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
+            <td valign='top' class='summary' >#{ entry.summary }
         <tr id='#{ entry.uid }-desc' class='description'>
             <td>&nbsp;
             <td colspan='2'><div class='content'>#{ entry.description }</div>
@@ -60,6 +61,7 @@ entriesUpdated = (entries) ->
     $("#entries").html(html)
     
     setupDescriptions()
+    favorites.setupFavorites()
 
 #----------------------------------------------------------------------
 setupDescriptions = () ->
