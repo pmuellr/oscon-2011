@@ -22,7 +22,7 @@ entryToHtml = (entry) ->
     html = """ 
         <tr id='#{ entry.uid }' class='event day-#{ entry.dateS.day }'>
             <td valign='top' class='fav-button'>&#x2606;
-            <td valign='top' class='time cal-#{cal}' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
+            <td valign='top' class='time cal-#{cal}' align='right'>#{ entry.dateS.time }
             <td valign='top' class='summary' >#{ entry.summary }
         <tr id='#{ entry.uid }-desc' class='description'>
             <td>&nbsp;
