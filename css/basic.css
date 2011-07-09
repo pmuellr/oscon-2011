@@ -1,38 +1,113 @@
-#entries .entry .title {
-    font-weight:   bold;
+@media screen and (max-width: 320px) {
+    body {
+        font-size:          100%;
+    }
 }
 
-#entries .entry .date {
-    margin-left:   1.0em;
+@media screen and (min-width: 321px) {
+    body {
+        font-size:          150%;
+    }
+    table {
+        font-size:          100%;
+    }
 }
 
-#entries .entry .location {
-    margin-left:   1.0em;
-    font-style:    italic;
+body {
+    font-family:            Verdana;
+    margin:                 0;
+    padding:                0.0em 0.2em;
 }
 
-#entries .entry .description {
-    margin-top:    0.5em;
-    margin-left:   1.0em;
-    margin-bottom: 1.0em;
+.menu {
+    white-space:            nowrap;
+    padding:                0.7em 0.0em 0.7em 0.0em;
+    margin:                 0.0em 0.0em 0.0em 0.0em;
+    overflow:               hidden;
 }
 
-#entries .entry .calendar {
-    padding-left:  0.3em;
-    padding-right: 0.3em;
+.menu .toggle {
+    font-size:              100%;
+    padding:                0.4em 0.4em 0.4em 0.4em;
+    margin:                 0.0em 0.0em 0.0em 0.0em;
+    font-weight:            bold;
+    -webkit-border-radius:  10px;
+    -moz-border-radius:     10px;
+    border:                 thin solid;
+}
+
+.menu .toggle.on {
+    background-color:       #777;
+    color:                  #FFF;
+}
+
+.fav-button {
+    color:                  #CCC;
+}
+
+.fav .fav-button {
+    color:                  #DDB700;
+}
+
+h1 {
+    font-size:              100%;
+    background-color:       #ff7;
+    margin:                 0.0em 0.0em;
+    padding:                0.2em 0.4em;
+}
+
+.day-divider {
+    background-color:       #000;
+    color:                  #FFF;
+    font-weight:            bold;
+    font-size:              120%;
+}
+
+.description {
+    display:                none;
+}
+
+.tools {
+    display:                none;
+}
+
+.tools.show {
+    display:                block;
+}
+
+.summary {
+    font-weight:            bold;
+}
+
+.description .content{
+    background:             #EEE;
+    padding-left:           0.3em;
+    padding-right:          0.3em;
+    border-left:            thin solid black;
+    border-bottom:          thin solid black;
+    border-right:           thin solid black;
+    -webkit-border-bottom-left-radius:  0.5em;
+    -webkit-border-bottom-right-radius: 0.5em;
 }
 
 .cal-oscon {
-    background-color: #9A000B;
-    color:            #FFFFFF;
+    background-color:       #A01;
+    color:                  #FFF;
 }
 
 .cal-data {
-    background-color: #C70933;
-    color:            #FFFFFF;
+    background-color:       #C93;
+    color:                  #FFF;
 }
 
 .cal-java {
-    background-color: #501375;
-    color:            #FFFFFF;
+    background-color:       #517;
+    color:                  #FFF;
+}
+
+#crap {
+    background-color:       #CCF;
+    -webkit-border-radius:  10px;
+    padding:                0.1em 0.1em;
+    margin:                 0.2em 0;
 }
