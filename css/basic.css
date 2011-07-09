@@ -1,39 +1,3 @@
-.day-divider {
-    background-color:       #000000;
-    color:                  #FFFFFF;
-    font-weight:            bold;
-    font-size:              120%;
-}
-
-.description {
-    display:                none;
-}
-
-.description .content{
-    background:             #EEEEEE;
-    padding-left:           0.3em;
-    padding-right:          0.3em;
-    border-left:            thin solid black;
-    border-bottom:          thin solid black;
-    border-right:           thin solid black;
-}
-
-.cal-oscon {
-    background-color:       #9A000B;
-    color:                  #FFFFFF;
-}
-
-.cal-data {
-    background-color:       #C70933;
-    color:                  #FFFFFF;
-}
-
-.cal-java {
-    background-color:       #501375;
-    color:                  #FFFFFF;
-}
-
-
 @media screen and (max-width: 320px) {
     body {
         font-size:          100%;
@@ -43,6 +7,9 @@
 @media screen and (min-width: 321px) {
     body {
         font-size:          150%;
+    }
+    table {
+        font-size:          100%;
     }
 }
 
@@ -59,16 +26,13 @@ body {
     overflow:               hidden;
 }
 
-.menu .button, .menu .toggle {
+.menu .toggle {
     font-size:              100%;
     padding:                0.4em 0.4em 0.4em 0.4em;
     margin:                 0.0em 0.0em 0.0em 0.0em;
     font-weight:            bold;
     -webkit-border-radius:  10px;
     -moz-border-radius:     10px;
-}
-
-.menu .toggle {
     border:                 thin solid;
 }
 
@@ -77,17 +41,12 @@ body {
     color:                  #FFF;
 }
 
-.menu .button {
-    background-color:       #BBB;
-    color:                  #FFF;
-}
-
 .fav-button {
-    color:                  #000;
+    color:                  #CCC;
 }
 
 .fav .fav-button {
-    color:                  #090;
+    color:                  #DDB700;
 }
 
 h1 {
@@ -95,6 +54,55 @@ h1 {
     background-color:       #ff7;
     margin:                 0.0em 0.0em;
     padding:                0.2em 0.4em;
+}
+
+.day-divider {
+    background-color:       #000;
+    color:                  #FFF;
+    font-weight:            bold;
+    font-size:              120%;
+}
+
+.description {
+    display:                none;
+}
+
+.tools {
+    display:                none;
+}
+
+.tools.show {
+    display:                block;
+}
+
+.summary {
+    font-weight:            bold;
+}
+
+.description .content{
+    background:             #EEE;
+    padding-left:           0.3em;
+    padding-right:          0.3em;
+    border-left:            thin solid black;
+    border-bottom:          thin solid black;
+    border-right:           thin solid black;
+    -webkit-border-bottom-left-radius:  0.5em;
+    -webkit-border-bottom-right-radius: 0.5em;
+}
+
+.cal-oscon {
+    background-color:       #A01;
+    color:                  #FFF;
+}
+
+.cal-data {
+    background-color:       #C93;
+    color:                  #FFF;
+}
+
+.cal-java {
+    background-color:       #517;
+    color:                  #FFF;
 }
 
 #crap {

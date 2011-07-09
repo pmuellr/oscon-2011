@@ -157,6 +157,7 @@ cacheLoad = () ->
     entryThaw(entry) for id, entry of Entries
     
     Events.trigger("update", Entries)
+    console.log(Entries)
 
 #----------------------------------------------------------------------
 xhrError = (jqXHR, textStatus, errorThrown) ->

@@ -19,18 +19,22 @@ thaw = () ->
     Favorites = JSON.parse(s)
 
 #----------------------------------------------------------------------
-addFavorite = (id, element) ->
-    Favorites[id] = true
-    freeze()
-    $(element).html(StarFilled)
-    $(element).css("color", StarColor)
+highlightFavorite = (id) ->
+    $("##{id}").addClass("fav")
+    $("##{id} .fav-button").html(StarFilled)
 
 #----------------------------------------------------------------------
-removeFavorite = (id, element) ->
+addFavorite = (id) ->
+    Favorites[id] = true
+    freeze()
+    highlightFavorite(id)
+
+#----------------------------------------------------------------------
+removeFavorite = (id) ->
     delete Favorites[id]
     freeze()
-    $(element).html(StarEmpty)
-    $(element).css("color", "#000000")
+    $("##{id}").removeClass("fav")
+    $("##{id} .fav-button").html(StarEmpty)
 
 #----------------------------------------------------------------------
 favoriteClicked = (element) ->
@@ -46,6 +50,8 @@ exports.setupFavorites = () ->
         favoriteClicked(this)
         event.stopPropagation()
     )
+    
+    highlightFavorite(id) for id, junk of Favorites 
     
 #----------------------------------------------------------------------
 exports.getFavorites = () ->

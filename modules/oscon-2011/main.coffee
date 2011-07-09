@@ -4,6 +4,8 @@ _        = require "underscore"
 appcache  = require "./appcache"
 calendar  = require "./calendar"
 favorites = require "./favorites"
+tools     = require "./tools"
+filters   = require "./filters"
 
 calendars = 
     oscon: "data/oscon.ics"
@@ -14,14 +16,17 @@ calendars =
 entryToHtml = (entry) ->
     date = "#{ entry.dateS.day } #{ entry.dateS.time }"
     cal  = entry.calendarName
+    description = entry.description
+    description += "<p>#{ entry.dateS.day } #{ entry.dateS.time } - #{ entry.dateE.time }; length: #{entry.length}"
+    description += "<p><a href='#{entry.url}'>[link]</a>"
     html = """ 
-        <tr id='#{ entry.uid }' class='event day-#{ entry.day }'>
+        <tr id='#{ entry.uid }' class='event day-#{ entry.dateS.day }'>
             <td valign='top' class='fav-button'>&#x2606;
-            <td valign='top' class='time' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
+            <td valign='top' class='time cal-#{cal}' align='right'>#{ entry.dateS.time }&nbsp;-&nbsp;
             <td valign='top' class='summary' >#{ entry.summary }
         <tr id='#{ entry.uid }-desc' class='description'>
             <td>&nbsp;
-            <td colspan='2'><div class='content'>#{ entry.description }</div>
+            <td colspan='2'><div class='content'>#{ description }</div>
     """
 
    #            <span class='calendar cal-#{ cal }'>#{ cal }</span>
@@ -77,13 +82,15 @@ setupDescriptions = () ->
         $("##{descriptionId}").css("display", display)
     )
 
-    $(".description").bind("click", () ->
-        $(this).css("display", "none")
-    )
+#    $(".description").bind("click", () ->
+#        $(this).css("display", "none")
+#    )
 
 #----------------------------------------------------------------------
 exports.main = () ->
     appcache.installListeners()
+
+    tools.setupTools()
 
     for name, url of calendars
         calendar.addCalendar(name, url)
