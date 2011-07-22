@@ -33,7 +33,6 @@ http://www.opensource.org/licenses/mit-license.php
 <!-- ======================================================================= -->
 <script src="modules/oscon-2011/main.amd.js"></script>
 <script src="modules/oscon-2011/appcache.amd.js"></script>
-<script src="modules/oscon-2011/calendar.amd.js"></script>
 <script src="modules/oscon-2011/favorites.amd.js"></script>
 <script src="modules/oscon-2011/tools.amd.js"></script>
 <script src="modules/oscon-2011/filters.amd.js"></script>
@@ -42,6 +41,8 @@ http://www.opensource.org/licenses/mit-license.php
 <script src="vendor/ical.amd.js"></script>
 <script src="vendor/backbone.amd.js"></script>
 <script src="vendor/underscore.amd.js"></script>
+
+<script src="data/calendar-entries.json.js"></script>
 
 <!-- ======================================================================= -->
 <script>
@@ -52,19 +53,25 @@ $(document).ready(require("oscon-2011/main").main)
 <body>
 <!-- ======================================================================= -->
 <h1>OSCON 2011</h1>
+
 <p>Unofficial scheduler.
 <a href="http://www.oscon.com/oscon2011">Here's the real thing.</a>
 <a href="https://github.com/pmuellr/oscon-2011">Fork me.</a>
 <a id='clear-button' href="#non-existant">Clear saved data.</a>
 
+<p>legend for time colors:
+<span class='cal-oscon'>oscon</span>
+<span class='cal-data'>data</span>
+<span class='cal-java'>java</span>
+
+
 <div class="menu">
-<span class="toggle button-day-Mon">mo</span>
-<span class="toggle button-day-Tue">tu</span>
-<span class="toggle button-day-Wed">we</span>
-<span class="toggle button-day-Thu">th</span>
-<span class="toggle button-day-Fri">fr</span>
+<span class="toggle button-day-Monday">mo</span>
+<span class="toggle button-day-Tuesday">tu</span>
+<span class="toggle button-day-Wednesday">we</span>
+<span class="toggle button-day-Thursday">th</span>
+<span class="toggle button-day-Friday">fr</span>
 <span class="toggle button-fav">&#x2605;</span>
-<span class="toggle button-tools">&#x2699;</span>
 </div>
 
 <div class="tools">
@@ -72,11 +79,6 @@ tools!
 </div>
 
 <div id="entries"></div>
-
-<p>legend for time colors:
-<span class='cal-oscon'>oscon</span>
-<span class='cal-data'>data</span>
-<span class='cal-java'>java</span>
 
 <!-- ======================================================================= -->
 </body>
